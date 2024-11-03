@@ -1,16 +1,11 @@
-import React from "react";
+import { IItem } from "@/libs/Schema/Item.model";
 
-export default function ItemsFormInputs() {
+export default function ItemsFormInputs({ itemData }: { itemData: IItem }) {
   const typeOfItems = [
-    {
-      name: "Service",
-      value: "service",
-    },
-    {
-      name: "Good",
-      value: "good",
-    },
+    { name: "Service", value: "service" },
+    { name: "Good", value: "good" },
   ];
+
   return (
     <>
       <div className="mb-4">
@@ -22,13 +17,14 @@ export default function ItemsFormInputs() {
         </label>
         <textarea
           id="description"
-          defaultValue={"description"}
           name="description"
           placeholder="Description..."
+          defaultValue={itemData?.description || ""}
           required
           className="block w-full border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
         />
       </div>
+
       <div className="mb-4">
         <label
           htmlFor="account"
@@ -41,8 +37,9 @@ export default function ItemsFormInputs() {
             id="account"
             name="account"
             list="accountOptions"
+            defaultValue={itemData?.account || ""}
             required
-            className="block w-full border border-gray-300 rounded-md py-2 px-3   text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
+            className="block w-full border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             placeholder="Select Type"
           />
           <datalist id="accountOptions">
@@ -53,6 +50,7 @@ export default function ItemsFormInputs() {
           </datalist>
         </div>
       </div>
+
       <div className="mb-4">
         <label
           htmlFor="price"
@@ -65,10 +63,12 @@ export default function ItemsFormInputs() {
           id="price"
           name="price"
           placeholder="0.00"
+          defaultValue={itemData?.price || 0}
           required
           className="block w-full border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
         />
       </div>
+
       <div className="mb-4">
         <label
           htmlFor="discount"
@@ -81,10 +81,12 @@ export default function ItemsFormInputs() {
           id="discount"
           name="discount"
           placeholder="1-100%"
+          defaultValue={itemData?.discount || 0}
           required
           className="block w-full border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
         />
       </div>
+
       <div className="mb-4">
         <label
           htmlFor="valueAddedTax"
@@ -97,13 +99,13 @@ export default function ItemsFormInputs() {
             id="valueAddedTax"
             name="valueAddedTax"
             list="valueAddedTaxOptions"
+            defaultValue={itemData?.valueAddedTax || ""}
             required
-            className="block w-full border border-gray-300 rounded-md py-2 px-3   text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
+            className="block w-full border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
             placeholder="Select Type"
           />
-
           <datalist id="valueAddedTaxOptions">
-            <option defaultValue="199" value="VAT 19" />
+            <option value="VAT 19" />
             <option value="VAT 9" />
             <option value="VAT 5" />
             <option value="System Created" />
@@ -114,16 +116,15 @@ export default function ItemsFormInputs() {
           </datalist>
         </div>
       </div>
+
       <div className="mb-4">
-        {/* make this radio button cursor pointer */}
         <label
           htmlFor="type"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
           Type of Item
         </label>
-
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2">
           {typeOfItems.map((item, index) => (
             <div key={index} className="flex items-center gap-2">
               <input

@@ -1,22 +1,19 @@
 "use client";
-import React from "react";
+
+import { useIsOpen } from "@/context/ItemsProvider";
 import ItemsForm from "./ItemsForm";
+import { useCreateItems } from "@/hooks/useCreateItems";
 
-function ItemsAddItemButton() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const bgRef = React.useRef<HTMLDivElement | null>(null);
-
-  const handleBackgroundClick = (e: React.MouseEvent) => {
-    // Close modal if clicking outside the modal content
-    if (bgRef.current && !bgRef.current.contains(e.target as Node)) {
-      setIsOpen(false);
-    }
-  };
+export default function ItemsAddItemButton() {
+  const { isOpen, setIsOpen } = useIsOpen();
+  const { handleBackgroundClick, bgRef } = useCreateItems();
 
   return (
     <div className="flex items-center w-[70vw] justify-end bg-white rounded-lg p-2 gap-2">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
         className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition duration-200"
       >
         Add Item
@@ -33,17 +30,15 @@ function ItemsAddItemButton() {
             <div className="flex justify-end items-center mb-4">
               <button
                 onClick={() => setIsOpen(false)}
-                className="hover:bg-gray-200  rounded-lg p-2 bg-gray-300 transition duration-200"
+                className="hover:bg-gray-200 rounded-lg p-2 bg-gray-300 transition duration-200"
               >
                 Close
               </button>
             </div>
-            <ItemsForm setIsOpen={setIsOpen} />
+            <ItemsForm />
           </div>
         </div>
       )}
     </div>
   );
 }
-
-export default ItemsAddItemButton;
