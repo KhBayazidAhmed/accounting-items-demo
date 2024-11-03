@@ -70,9 +70,7 @@ export default function ItemsTableData() {
                 >
                   <td className="py-3 px-4 border-b">{item.description}</td>
                   <td className="py-3 px-4 border-b">{item.type}</td>
-                  <td className="py-3 px-4 border-b">
-                    ${item.price.toFixed(2)}
-                  </td>
+                  <td className="py-3 px-4 border-b">${item.price}</td>
                   <td className="py-3 px-4 border-b ">
                     <div className="flex gap-2 justify-center items-center">
                       <Link

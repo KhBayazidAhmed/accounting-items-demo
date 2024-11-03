@@ -17,9 +17,9 @@ export function useCreateItems() {
       const data: Partial<IItem> = {
         description: formData.get("description") as string,
         account: formData.get("account") as string,
-        price: Number(formData.get("price")),
-        discount: Number(formData.get("discount")),
-        valueAddedTax: Number(formData.get("valueAddedTax")),
+        price: formData.get("price") as string,
+        discount: formData.get("discount") as string,
+        valueAddedTax: formData.get("valueAddedTax") as string,
         type: formData.get("type") as "service" | "good",
       };
 
@@ -37,9 +37,9 @@ export function useCreateItems() {
       const data: Partial<IItem> = {
         description: formData.get("description") as string,
         account: formData.get("account") as string,
-        price: Number(formData.get("price")),
-        discount: Number(formData.get("discount")),
-        valueAddedTax: Number(formData.get("valueAddedTax")),
+        price: formData.get("price") as string,
+        discount: formData.get("discount") as string,
+        valueAddedTax: formData.get("valueAddedTax") as string,
         type: formData.get("type") as "service" | "good",
       };
 
