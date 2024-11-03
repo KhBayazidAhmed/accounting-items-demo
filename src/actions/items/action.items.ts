@@ -17,6 +17,7 @@ export async function GetItems(currentPage: number, itemsPerPage: number) {
       success: true,
       data: items,
     };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(error.message);
     return {
@@ -55,6 +56,7 @@ export async function CreateItem(data: IItem) {
       success: true,
       data: JSON.stringify(item),
     };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(error.message);
     return {
