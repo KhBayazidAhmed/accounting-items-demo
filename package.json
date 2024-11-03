@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+      "vercel-build": "npm install --legacy-peer-deps && vercel build"
+
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.17",
