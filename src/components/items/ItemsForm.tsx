@@ -6,7 +6,7 @@ export default function ItemsForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-md">
-      <ItemsFormInputs />
+      <ItemsFormInputs itemData={undefined} />
       <button
         type="submit"
         className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-200"

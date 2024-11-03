@@ -1,6 +1,10 @@
 import { IItem } from "@/libs/Schema/Item.model";
 
-export default function ItemsFormInputs({ itemData }: { itemData: IItem }) {
+export default function ItemsFormInputs({
+  itemData,
+}: {
+  itemData: IItem | undefined;
+}) {
   const typeOfItems = [
     { name: "Service", value: "service" },
     { name: "Good", value: "good" },
